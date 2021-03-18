@@ -1,3 +1,5 @@
+![image](https://user-images.githubusercontent.com/77543839/111577970-95e4c800-8789-11eb-950d-35f9f8fd56f0.png)
+---
 # IPL 2008-2020 Data Analysis using R
  
 ---
@@ -43,9 +45,19 @@ This Dataset Contains Data of IPL Matches starting from 2008 to 2020.
 
 The IPL is the most attended cricket league in the world and rank sixth among all sports leagues. In 2010 the IPL became the first sporting event in the world to be broadcasted live in YOUTUBE . The brand value of IPL was estimated to be US $3.2 billion in 2014. According to BCCI, the 2015 IPL Season contributed 11.5 million to the GDP of the Indian economy.
 
+---
+![image](https://user-images.githubusercontent.com/77543839/111577989-9da46c80-8789-11eb-8f69-4bce400f7b7a.png)
+---
+
+
+
 ![](C:/Users/divya/Downloads/MicrosoftTeams-image.png)
 
 Before we begin with the analysis, lets first load the data and have a quick look at it :
+
+---
+![image](https://user-images.githubusercontent.com/77543839/111577998-a4cb7a80-8789-11eb-870e-09d94da7da95.png)
+---
 
 ```{r }
 ipl <- read.csv("C:/Users/divya/Downloads/IPL DATASET/IPL Matches 2008-2020.csv")
@@ -157,6 +169,10 @@ ggplot(season_match_count,
 
 most_wins <- ipl %>% group_by(season) %>% summarise(count = n()) %>% arrange(desc(count)) %>% filter(row_number()==1)
 print(paste0("Season ",most_wins$season, " had most number of matches, : " ,most_wins$count ))
+---
+
+![image](https://user-images.githubusercontent.com/77543839/111578075-cb89b100-8789-11eb-8c65-f0e56f75f1a1.png)
+
 
 ```
 After viewing the plot, it is evident that the management changed the format in the initial year but from season 7 to season 13 total number of matched are 60. 
@@ -201,6 +217,9 @@ successful_team
 
 Overview of matches played, toss won, wins, and losses for each team in the IPL history.
 
+---
+![image](https://user-images.githubusercontent.com/77543839/111578066-c593d000-8789-11eb-9c5d-27d260e4eadc.png)
+---
 ```{r }
 team1 <- ipl %>% group_by(team1) %>% summarise(count = n()) %>% arrange(team1)
 
@@ -216,8 +235,11 @@ print(team_summary)
 
 ggplot(team_summary, aes(x = team1, y = match_wins  , color = team1 , size = match_wins)) +
   geom_point()
+  
+---
+`![image](https://user-images.githubusercontent.com/77543839/111578101-d8a6a000-8789-11eb-9c5a-229c0ee8c4e5.png)``
+---
 
-```
 
 3)Most number of Title wins 
 
@@ -251,7 +273,10 @@ ipl_stat$match_toss<-ifelse(as.character(ipl$toss_winner)==as.character(ipl$winn
 
 ggplot(ipl_stat[which(!is.na(ipl_stat$match_toss)),],aes(match_toss, fill = match_toss))+ 
   geom_bar()+ xlab("Toss") +ylab("Number of matches won")+ ggtitle("How much of a advantage is winning the toss")
+----
 
+![image](https://user-images.githubusercontent.com/77543839/111578111-dd6b5400-8789-11eb-9766-16230b480cba.png)
+---
 
 ```
 
